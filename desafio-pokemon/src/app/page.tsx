@@ -14,9 +14,10 @@ export default function Pagina() {
 
   const [Pokemons, setPokemons] = useState<Pokemon[]>([])
   const [pesquisa, setPesquisa] = useState("")
+  const [clique, setClicado] = useState<"grid"| "lista">("grid")
 
   useEffect(() => {
-    async function fetchPokemons() {
+    async function BuscandoPokemons() {
 
 
 
@@ -33,7 +34,7 @@ export default function Pagina() {
        setPokemons(listaDePokemon)
     }
 
-    fetchPokemons()
+    BuscandoPokemons()
   }, [])
 
   const pokemonsDigitado = Pokemons.filter(p =>
@@ -41,7 +42,8 @@ export default function Pagina() {
   )
 
   return (
-    <div className=" bg-gray-800 rounded-md">
+    
+    <div className=" bg-gray-800 rounded-md p-6">
       <input
         type="text"
         value={pesquisa}
@@ -50,6 +52,10 @@ export default function Pagina() {
         className="border p-2 mb-4 w-full max-w-sm rounded bg-gray-500 mt-6 ml-5"
       />
 
+      <button onClick={() => 
+        {setClicado}} className="text-white ">ALTERAR VISUAL</button>
+
+      
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 p-6 ">
 
         {pokemonsDigitado.map(pokemon =>
