@@ -41,23 +41,23 @@ export default function Pagina() {
   )
 
   return (
-    <div>
+    <div className=" bg-gray-800 rounded-md">
       <input
         type="text"
         value={pesquisa}
-        placeholder="CAPTURA TEU POKMONZERA"
+        placeholder="Encontre o Pokemon"
         onChange={(e) => setPesquisa(e.target.value)}
-        className="border p-2 mb-4 w-full max-w-sm rounded"
+        className="border p-2 mb-4 w-full max-w-sm rounded bg-gray-500 mt-6 ml-5"
       />
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 p-6 ">
 
         {pokemonsDigitado.map(pokemon =>
         (<div key={pokemon.id}
-              className="border p-2 rounded text-center">
-            <img src={pokemon.imagem} alt={pokemon.nome} className="mx-auto" />
-          <h2 className="font-bold mt-2 capitalize"> Nome do Pokemon:  { pokemon.nome} </h2>
-            <p>ID: {pokemon.id}</p>
+              className="border p-2 rounded text-center  bg-yellow-100">
+            <img src={pokemon.imagem}  className="mx-auto" />
+          <h2 className="font-bold mt-2 text-xl text-black">{ pokemon.nome} </h2>
+            <p className="font-bold text-black">ID: {pokemon.id}</p>
           </div>
         ))}
       </div>
