@@ -19,12 +19,9 @@ export default function Pagina() {
   useEffect(() => {
     async function BuscandoPokemons() {
 
-
-
-
       const respossta = await fetch("https://pokeapi.co/api/v2/pokemon?limit=50")
       const data = await respossta.json()
-  const listaDePokemon: Pokemon[] = data.results.map((p: any, index: number) => ({
+      const listaDePokemon: Pokemon[] = data.results.map((p: any, index: number) => ({
         id: index + 1,
         nome: p.name,
       imagem: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
@@ -53,10 +50,13 @@ export default function Pagina() {
       />
 
       <button onClick={() => 
-        {setClicado}} className="text-white ">ALTERAR VISUAL</button>
+        setClicado(clique === "grid" ? "lista" : "grid")} className="text-white bg-blue-600 px-4 py-2 ml-4 rounded-md hover:bg-blue-700  transition" >
+        ALTERAR VISUAL</button>
+
+      <div className={clique === "grid" ? "grid grid-cols-2 md:grid-cols-4 p-5 gap-4" : "flex flex-col p-6"}>       
 
       
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 p-6 ">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 p-6 "></div>
 
         {pokemonsDigitado.map(pokemon =>
         (<div key={pokemon.id}
